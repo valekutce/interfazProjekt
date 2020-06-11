@@ -42,11 +42,11 @@
 		</header>
 		<div class="promo">
 			<div class="promo__title">
-				<h1>Питательные Суши</h1>
+				<h1 class="title_discr">Питательные Суши</h1>
 				<div class="promo__text">
 					Далеко-далеко, за словесными горами в стране гласных и согласных живут рыбные тексты. 
 				</div>
-				<button class="button button_green">Заказать сейчас</button>
+				<button class="button button_green order">Заказать сейчас</button>
 			</div>
 		</div>
 		<section class="Oriental">
@@ -54,9 +54,9 @@
 				<div class="Oriental__block">
 					<div class='Oriental__img'><img src="img/section2/mainSect2.jpg" alt="foto"></div>
 					<div class="Oriental__discr">
-						<h2>Восточные суши</h2>
+						<h2 class="title_discr">Восточные суши</h2>
 						<div class="Oriental__text">Далеко-далеко за словесными горами в стране гласных и согласных живут, рыбные тексты. Толку от всех она скатился рот буквоград дороге города предложения заманивший.</div>
-						<button class="button button_pink">Заказать сейчас</button>
+						<button class="button button_pink order">Заказать сейчас</button>
 					</div>
 				</div>
 			</div>
@@ -107,9 +107,9 @@
 			<div class="container">
 				<div class="Oriental__block Kawaii__block">
 					<div class="Oriental__discr Kawaii__discr">
-						<h2>Каваи Суши</h2>
+						<h2 class="title_discr">Каваи Суши</h2>
 						<div class="Oriental__text Kawaii__text">Далеко-далеко за словесными горами в стране гласных и согласных живут, рыбные тексты. Толку от всех она скатился рот буквоград дороге города предложения заманивший.</div>
-						<button class="button button_pink">Заказать сейчас</button>
+						<button class="button button_pink order">Заказать сейчас</button>
 					</div>
 					<div class='Oriental__img Kawaii__img'><img src="img/section5/main1.jpg" alt="foto"></div>
 				</div>
@@ -185,12 +185,26 @@
 				</div>
 			</div>
 		</footer>
-	</div>
+		<div class="overlay">
+			<div class="popup">
+				<span>&times;</span>
+				<div class="popup__title">Ваш заказ:</div>
+				<div class="popup__discr">Далеко-далеко, за словесными.</div>
+				<form action="#" class="forms">
+					<input type="text" name="name" placeholder="Ваше имя">
+					<input type="tel" name="fhone" placeholder="Ваш номер телефона">
+					<input type="submit" value="заказать">
+				</form>
+			</div>
+		</div>
+	</div> 
 
-
+ 
 
 
 	<script src="js/jQuery_v3.3.1.min.js"></script>
+	<script src='js/jquery.validate.min.js'></script>
+	<script src="js/jquery.maskedinput.min.js"></script>
 	<script src="libs/bootstrap/js/bootstrap.min.js"></script>
 	<script src="libs/wow.min.js"></script>
 	<script src="libs/jquery.nicescroll.min.js"></script>
@@ -244,21 +258,49 @@
 					"position": 'fixed',
 					"padding":"10px 64px",
 					"box-shadow": "0 5px 10px"
-				})
+				});
 			  } else if($(document).width() > 768 && $(document).scrollTop() < 300 ) {
 				$('.header').css({
 					"position": 'static',
 					"padding":"28px 64px"
-				}) 
+				}); 
 			  } else if($(document).width() < 768 && $(document).scrollTop() < 300){
 				$('.header').css({
 					"position": 'fixed',
 					"box-shadow": "none",
 					"padding":"28px 64px"
-				}) 
+				}); 
 			  }
-		  })
+		  });
 		});
+
+		$(function(){
+			$('.order').click(function(){
+				let order = $(this).siblings('.title_discr').text();
+				$('.popup__discr').text(order);
+				$('.overlay').fadeIn();
+				$('.popup').fadeIn(500);
+			});
+			$('.popup span').click(function(){
+				$('.overlay,.popup').fadeOut();
+			});
+		});
+	  </script>
+	  <script>
+		  $(function(){
+			$('.forms').validate({
+				rules: {
+					// simple rule, converted to {required:true}
+					name: "required",
+					fhone: "required"
+				},
+				messages: {
+					name: "Пожалуйста, укажите ваше имя",
+					fhone: "Ваш телефон нужен для связи с вам"
+				}
+			});
+			$('input[name=fhone]').mask("+38(999) 999-99-99");
+		  });
 	  </script>
 </body>
 </html>
