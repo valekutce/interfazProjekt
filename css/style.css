@@ -164,9 +164,6 @@ body {
   max-width: 100%;
   text-align: center;
 }
-.Special__block:hover img {
-  transform: scale(1.1);
-}
 .Special__img {
   width: 239px;
   max-width: 100%;
@@ -465,6 +462,86 @@ body {
 }
 .burg__activ .burg__one, .burg__activ .burg__fo {
   opacity: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  max-width: 100%;
+  background-color: #fd9191;
+  padding: 50px 30px 100px 30px;
+  border-radius: 30px;
+  display: none;
+}
+.popup__title, .popup__discr {
+  color: #ffffff;
+  text-align: center;
+}
+.popup__title {
+  font-size: 30px;
+  font-weight: 700;
+}
+.popup__discr {
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.popup form {
+  width: 260px;
+  max-width: 100%;
+  margin: auto;
+}
+.popup form input {
+  width: 100%;
+  height: 45px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+}
+.popup form input:not([type=submit]) {
+  padding: 0 0 0 10px;
+}
+.popup form input.error {
+  background-color: #b02727;
+  color: #fff;
+}
+.popup form [type=submit] {
+  background-color: #2fb4ac;
+  color: #ffffff;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.popup form [type=submit]:hover {
+  background: #248c85;
+}
+.popup span {
+  font-size: 50px;
+  color: #ffffff;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  cursor: pointer;
+}
+
+label.error {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 30px;
 }
 
 /*для больших экранов*/
